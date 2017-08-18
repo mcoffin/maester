@@ -112,4 +112,17 @@ package object instances {
       }
     }
   }
+  implicit class DecodeWithDecodeException[From, To] (
+    decoder: Decode[DecodeException[From], From, To]
+  ) {
+    def >=>[A, EE](other: Decode[DecodeException[EE], To, A]): Decode[DecodeException[From], From, A] =
+      Decode apply { originalValue =>
+        type M[T] = \/[DecodeException[From], T]
+        val otherPrime = implicitly[Bifunctor[({type λ[E, T] = Decode[E, To, T]})#λ]].leftMap(other) {
+          case DecodeException(expected, _) =>
+            DecodeException(expected, originalValue)
+        }
+        decoder.decode[M](originalValue) >>= (otherPrime.decode[M](_))
+      }
+  }
 }
