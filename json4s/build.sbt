@@ -1,4 +1,5 @@
 name := "maester-json4s"
+description := "json4s support for maester's monadic decoding patterns"
 
 val json4sVersion = settingKey[String]("json4sVersion")
 json4sVersion := "3.2.+"

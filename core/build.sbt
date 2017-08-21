@@ -1,4 +1,5 @@
 name := "maester"
+description := "Monadic decoding patterns"
 
 scalaVersion := "2.12.3"
 crossScalaVersions ++= Seq(
