@@ -1,3 +1,5 @@
+name := "maester-json4s"
+
 val json4sVersion = settingKey[String]("json4sVersion")
 json4sVersion := "3.2.+"
 
