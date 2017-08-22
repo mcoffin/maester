@@ -1,3 +1,5 @@
 *.class
 *.log
 /target
+/gpg.sbt
+/project/gpg.sbt
