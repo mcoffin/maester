@@ -37,8 +37,6 @@ publishTo in ThisBuild := {
     Some("releases" at s"$nexus/service/local/staging/deploy/maven2")
 }
 
-useGpg in ThisBuild := true
-
 lazy val core = project in file("./core")
 lazy val json4s = project in file("./json4s") dependsOn(
   core
